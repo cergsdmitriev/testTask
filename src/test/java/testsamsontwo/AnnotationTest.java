@@ -7,6 +7,10 @@ package testsamsontwo;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.testng.TestListenerAdapter;
+import org.testng.TestNG;
+
+
 
 /**
  *
@@ -17,6 +21,20 @@ public class AnnotationTest {
    
     @Test
     public void annotation() {
-       assertEquals(1, 1);
+        System.out.println("test is run! Begin.");
+        TestNG tng = new TestNG();
+        //TODO ServiceLoader
+        tng.setTestClasses(new Class[] { this.getClass() });
+        TestListenerAdapter listener = new TestListenerAdapter();
+        tng.addListener(listener);
+        tng.run();
+        
+        System.out.println("Annotation is: " + listener.getPassedTests().isEmpty() + "  "
+        + this.getClass().getAnnotations()[0].toString());
+       // ITestResult testResult = listener.getPassedTests().get(0);
+        //System.out.println(testResult.getClass().getAnnotations()[0].toString());
+        
+        System.out.println("test is run! End."); 
+        assertEquals(1, 1);
     }
 }
