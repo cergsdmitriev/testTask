@@ -5,22 +5,43 @@
  */
 package testsamsontwo;
 
-import org.testng.ISuite;
-import org.testng.ISuiteListener;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
 /**
  *
  * @author cerg
  */
-public class MySuiteListener implements ISuiteListener {
+public class MySuiteListener implements ITestListener {
 
     @Override
-    public void onStart(ISuite isuite) {
-        System.out.println("Starting");
+    public void onTestStart(ITestResult itr) {
+        
     }
 
     @Override
-    public void onFinish(ISuite isuite) {
-        System.out.println("Finishing");
+    public void onTestSuccess(ITestResult itr) {
+    }
+
+    @Override
+    public void onTestFailure(ITestResult itr) {
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult itr) {
+    }
+
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult itr) {
+    }
+
+    @Override
+    public void onStart(ITestContext itc) {
+    }
+
+    @Override
+    public void onFinish(ITestContext itc) {
+        System.out.println("test finish from listener");
     }
 }
